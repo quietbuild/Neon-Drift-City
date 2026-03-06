@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Neon Drift City</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══ LOADING SCREEN ═══ -->
+  <div id="loading">
+    <div class="loading-bg"></div>
+    <div class="loading-grid"></div>
+    <div class="loading-content">
+      <div class="title-glow-ring"></div>
+      <p class="subtitle-pre">▸ INITIALIZING SIMULATION ◂</p>
+      <h1 class="game-title">
+        <span class="title-neon" data-text="NEON">NEON</span>
+        <span class="title-gap"> </span>
+        <span class="title-drift" data-text="DRIFT">DRIFT</span>
+        <br />
+        <span class="title-city" data-text="CITY">CITY</span>
+      </h1>
+      <div class="loading-bar-wrap">
+        <div class="loading-bar">
+          <div class="loading-fill" id="loadingFill"></div>
+          <div class="loading-glow"></div>
+        </div>
+        <div class="loading-percent" id="loadingPercent">0%</div>
+      </div>
+      <p class="loading-status" id="loadingStatus">Generating city blocks...</p>
+      <div class="controls-preview">
+        <div class="ctrl-item"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> Drive</div>
+        <div class="ctrl-item"><kbd>SPACE</kbd> Drift</div>
+        <div class="ctrl-item"><span class="neon-cube-icon">■</span> Collect cubes</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ HUD ═══ -->
+  <div id="hud">
+
+    <!-- Score top-left -->
+    <div id="score-panel">
+      <div class="panel-label">SCORE</div>
+      <div class="score-value" id="scoreValue">0</div>
+      <div class="cubes-label">CUBES: <span id="cubesCollected">0</span></div>
+    </div>
+
+    <!-- Drift indicator top-center -->
+    <div id="drift-indicator">
+      <div class="drift-bar-wrap">
+        <div class="drift-bar-fill" id="driftBar"></div>
+      </div>
+      <div class="drift-label" id="driftLabel">GRIP</div>
+    </div>
+
+    <!-- Speedometer bottom-right -->
+    <div id="speedometer">
+      <svg class="speedo-arc" viewBox="0 0 120 70">
+        <path class="arc-bg" d="M 10 65 A 55 55 0 0 1 110 65" fill="none" stroke="#1a0033" stroke-width="6"/>
+        <path class="arc-fill" id="arcFill" d="M 10 65 A 55 55 0 0 1 10 65" fill="none" stroke="url(#speedo-grad)" stroke-width="6" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="speedo-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#aa00ff"/>
+            <stop offset="50%" stop-color="#ff00ff"/>
+            <stop offset="100%" stop-color="#00ffff"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="speed-digits" id="speedValue">0</div>
+      <div class="speed-unit">KM/H</div>
+      <div class="speed-max">MAX <span id="topSpeed">0</span></div>
+    </div>
+
+    <!-- Controls hint -->
+    <div id="controls-hint">
+      <div class="hint-row"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> Drive</div>
+      <div class="hint-row"><kbd>SPC</kbd> Drift</div>
+    </div>
+
+    <!-- Drift flash overlay -->
+    <div id="drift-flash"></div>
+
+  </div>
+
+  <!-- ═══ SIGNATURE ═══ -->
+  <div id="signature">Game by Vrishab Varun</div>
+
+  <!-- ═══ CANVAS ═══ -->
+  <canvas id="gameCanvas"></canvas>
+
+  <!-- ═══ MOBILE TOUCH CONTROLS ═══ -->
+  <div id="touch-controls">
+    <div id="joystick-zone">
+      <div id="joystick-base">
+        <div id="joystick-stick"></div>
+      </div>
+    </div>
+    <div id="touch-drift-btn">DRIFT</div>
+  </div>
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
